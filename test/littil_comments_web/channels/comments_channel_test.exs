@@ -5,9 +5,7 @@ defmodule LittilCommentsWeb.CommentsChannelTest do
     {:ok, _, socket} =
       LittilCommentsWeb.UserSocket
       |> socket("user_id", %{host: "example.com"})
-      |> subscribe_and_join(LittilCommentsWeb.CommentsChannel, "comments:/test/path", %{
-        "host" => "example.com"
-      })
+      |> subscribe_and_join(LittilCommentsWeb.CommentsChannel, "comments:/test/path", %{})
 
     %{socket: socket}
   end

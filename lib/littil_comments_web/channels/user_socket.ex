@@ -35,8 +35,8 @@ defmodule LittilCommentsWeb.UserSocket do
   # See `Phoenix.Token` documentation for examples in
   # performing token verification on connect.
   @impl true
-  def connect(_params, socket, _connect_info) do
-    {:ok, socket}
+  def connect(_params, socket, %{:uri => %{host: host}}) do
+    {:ok, assign(socket, :host, host)}
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:

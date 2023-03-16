@@ -14,7 +14,7 @@ defmodule LittilCommentsWeb.Endpoint do
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   socket "/socket", LittilCommentsWeb.UserSocket,
-    websocket: true,
+    websocket: [connect_info: [:uri, :peer_data, :user_agent]],
     longpoll: false
 
   # Serve at "/" the static files from "priv/static" directory.

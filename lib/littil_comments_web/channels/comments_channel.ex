@@ -3,9 +3,7 @@ defmodule LittilCommentsWeb.CommentsChannel do
   alias LittilComments.Comments
 
   @impl true
-  def join("comments:" <> path, %{"host" => host}, socket) do
-    socket = assign(socket, :host, host)
-
+  def join("comments:" <> path, _params, %{assigns: %{host: host}} = socket) do
     case Comments.list_comments_by_host_and_path(host, path) do
       [] ->
         {:ok, socket}
